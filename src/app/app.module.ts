@@ -5,21 +5,27 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { ChatRoomPage,HomePage } from "../pages/pages";
+
+import { SocketIoModule,SocketIoConfig } from "ng-socket-io";
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {}};
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatRoomPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SocketIoModule.forRoot(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatRoomPage
   ],
   providers: [
     StatusBar,
